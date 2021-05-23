@@ -1,8 +1,8 @@
 #include "inputwidget.h"
 
-static Widget* m_instance = nullptr;
+static InputFileWidget* m_instance = nullptr;
 
-Widget::Widget(QWidget *parent)
+InputFileWidget::InputFileWidget(QWidget *parent)
     : QWidget(parent)
 {
     memoryAllocation();
@@ -10,14 +10,14 @@ Widget::Widget(QWidget *parent)
     setMinimumSize(400,120);
     setMaximumSize(600,120);
     connect(m_startScaning, &QPushButton::clicked,
-                this    ,&Widget::startScaningPressed);
+                this    ,&InputFileWidget::startScaningPressed);
 }
 
-Widget::~Widget()
+InputFileWidget::~InputFileWidget()
 {
 }
 
-void Widget::startScaningPressed()
+void InputFileWidget::startScaningPressed()
 {
     try {
         ReadFile readFile;
@@ -34,7 +34,7 @@ void Widget::startScaningPressed()
     }
 }
 
-void Widget::memoryAllocation()
+void InputFileWidget::memoryAllocation()
 {
     m_path = new QLabel("Input the path", this);
     m_filter = new QLabel ("Input filter", this);
@@ -44,7 +44,7 @@ void Widget::memoryAllocation()
     m_gridLayout = new QGridLayout(this);
 }
 
-void Widget::setUpWidgets()
+void InputFileWidget::setUpWidgets()
 {
     m_gridLayout->addWidget(m_path,0,0);
     m_gridLayout->addWidget(m_inputPath, 0,1);
@@ -54,7 +54,7 @@ void Widget::setUpWidgets()
     setLayout(m_gridLayout);
 }
 
-void Widget::handle_eptr(std::exception_ptr eptr)
+void InputFileWidget::handle_eptr(std::exception_ptr eptr)
 {
     try {
         if (eptr) {
@@ -65,16 +65,16 @@ void Widget::handle_eptr(std::exception_ptr eptr)
     }
 }
 
-void *getInstance()
+void *getFileWidgetInstance()
 {
     if(!m_instance)
-        m_instance = new (std::nothrow) Widget();
+        m_instance = new (std::nothrow) InputFileWidget();
     return m_instance;
 }
 
 
 
-void releaseInstance(Widget *)
+void releaseFileWidgetInstance(InputFileWidget *)
 {
     if(m_instance != nullptr)
         {

@@ -16,13 +16,13 @@
 #include "readfile.h"
 #include "outputwidget.h"
 
-class Widget : public QWidget
+class InputFileWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
-    ~Widget();
+    InputFileWidget(QWidget *parent = nullptr);
+    ~InputFileWidget();
 
 public slots:
     void startScaningPressed();
@@ -34,7 +34,7 @@ private:
     QLabel      * m_filter;
     QPushButton * m_startScaning;
     QGridLayout * m_gridLayout;
-    OutputWidget  m_outputWidget;
+    OutputFileWidget  m_outputWidget;
 
 private:
     void memoryAllocation();
@@ -43,7 +43,7 @@ private:
 
 };
 
-extern "C" void *getInstance();
-extern "C" void  releaseInstance(Widget*);
+extern "C" void *getFileWidgetInstance();
+extern "C" void  releaseFileWidgetInstance(InputFileWidget*);
 
 #endif // INPUTWIDGET_H

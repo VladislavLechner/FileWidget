@@ -1,12 +1,12 @@
 #include "outputwidget.h"
 
-OutputWidget::OutputWidget(QWidget *parent)
+OutputFileWidget::OutputFileWidget(QWidget *parent)
     : QWidget(parent)
 {
     setUpLayout();
 }
 
-void OutputWidget::setUpLayout()
+void OutputFileWidget::setUpLayout()
 {
      m_automaticCollection = new QLabel("Автоматически собранная информация\n",this);
      m_filterCollectrion = new QLabel("Информация, полученная от пользователя\n",this);
@@ -16,7 +16,7 @@ void OutputWidget::setUpLayout()
      m_gridLayout->addWidget( m_filterCollectrion,0,1);
 }
 
-void OutputWidget::outputTheResults(std::pair<std::map<char, std::size_t>, int> result, QString filter)
+void OutputFileWidget::outputTheResults(std::pair<std::map<char, std::size_t>, int> result, QString filter)
 {
     for (auto& x:result.first)
     {

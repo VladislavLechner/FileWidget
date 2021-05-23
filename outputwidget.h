@@ -6,11 +6,11 @@
 #include <QGridLayout>
 #include <QDebug>
 
-class OutputWidget : public QWidget
+class OutputFileWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit OutputWidget(QWidget *parent = nullptr);
+    explicit OutputFileWidget(QWidget *parent = nullptr);
     void outputTheResults(std::pair <std::map <char,std::size_t>, int> result, QString filter);
 
 private:
