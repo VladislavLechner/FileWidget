@@ -65,7 +65,7 @@ void InputFileWidget::handle_eptr(std::exception_ptr eptr)
     }
 }
 
-void *getFileWidgetInstance()
+void *getWidgetInstance()
 {
     if(!m_instance)
         m_instance = new (std::nothrow) InputFileWidget();
@@ -74,12 +74,17 @@ void *getFileWidgetInstance()
 
 
 
-void releaseFileWidgetInstance(InputFileWidget *)
+//void releaseWidgetInstance(InputFileWidget *)
+//{
+//    if(m_instance != nullptr)
+//        {
+//            delete m_instance;
+//            m_instance = nullptr;
+//        }
+//}
+
+std::string *getInfo()
 {
-    if(m_instance != nullptr)
-        {
-            delete m_instance;
-            m_instance = nullptr;
-        }
+    return (new std::string("Это библиотека предназначена для нахождения повторяющихся символов в тектовом документе и для поиска по фильтру пользователя"));
 }
 
