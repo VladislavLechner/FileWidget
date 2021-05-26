@@ -44,7 +44,7 @@ private:
 };
 
 extern "C" void *getWidgetInstance();
-//extern "C" void  releaseWidgetInstance(InputFileWidget*);
+extern "C" void  releaseWidgetInstance(InputFileWidget*);
 extern "C" std::string *getInfo();
 
 #endif // INPUTWIDGET_H

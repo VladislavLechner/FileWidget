@@ -15,6 +15,7 @@ InputFileWidget::InputFileWidget(QWidget *parent)
 
 InputFileWidget::~InputFileWidget()
 {
+    releaseWidgetInstance(m_instance);
 }
 
 void InputFileWidget::startScaningPressed()
@@ -74,14 +75,14 @@ void *getWidgetInstance()
 
 
 
-//void releaseWidgetInstance(InputFileWidget *)
-//{
-//    if(m_instance != nullptr)
-//        {
-//            delete m_instance;
-//            m_instance = nullptr;
-//        }
-//}
+void releaseWidgetInstance(InputFileWidget *)
+{
+    if(m_instance != nullptr)
+        {
+            delete m_instance;
+            m_instance = nullptr;
+        }
+}
 
 std::string *getInfo()
 {
